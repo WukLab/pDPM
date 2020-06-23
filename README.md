@@ -1,3 +1,5 @@
 # Passive Disaggregated Persistent Memory (pDPM, ATC'20)
 
-Code coming soon.
+Paper: https://cseweb.ucsd.edu/~yiying/pDPM-ATC20.pdf
+
+Code coming soon, stay tuned!
