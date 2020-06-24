@@ -1,0 +1,14 @@
+yum install memcached memcached-devel libmemcached libmemcached-devel numactl numactl-devel mbedtls mbedtls-devel glib2 glib2-devel
+yum install glibc-static bzip2 yum-utils python-devel bzip2-devel papi-devel
+yum install libhugetlbfs-utils libhugetlbfs
+==boost==
+wget https://sourceforge.net/projects/boost/files/boost/1.60.0/boost_1_60_0.tar.gz/download
+./bootstrap.sh --with-libraries=system,coroutine,coroutine2
+./b2 -aq install
+
+
+
+==some hugepage instruction==
+hugeadm --pool-pages-min 2MB:8192
+mkdir -p /mnt/hugetlbfs ; mount -t hugetlbfs none /mnt/hugetlbfs
+numactl --physcpubind=0 --localalloc LD_PRELOAD=libhugetlbfs.so HUGETLB_MORECORE=yes

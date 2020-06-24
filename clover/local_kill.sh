@@ -1,0 +1,3 @@
+
+pkill memcached
+pkill init
