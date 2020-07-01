@@ -61,9 +61,13 @@ void get_file(int **op, int**key, int thread_id)
   int i; 
   i=0;
 
-  sprintf(filepath, "workload/ycsb/workloadc_%d", thread_id);
+  sprintf(filepath, "workload_trace/ycsb/workloadc_%d", thread_id);
   printf("start reading %s\n", filepath);
   fp=fopen(filepath, "r");
+  if (fp == NULL) {
+    printf("%s: Fail to open %s\n", __func__, filepath);
+    exit(0);
+  }
 
   op_key = malloc(sizeof(int)*test_times);
   write_key = malloc(sizeof(int)*test_times);

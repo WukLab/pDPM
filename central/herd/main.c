@@ -3,7 +3,8 @@
 #include "hrd.h"
 #include "mica.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[])
+{
   /* Use small queues to reduce cache pressure */
   assert(HRD_Q_DEPTH == 128);
 
@@ -141,22 +142,11 @@ int main(int argc, char* argv[]) {
 
       if(memory_num==-1)
               pthread_create(&thread_arr[i], NULL, run_client, &param_arr[i]);
-      else
-      { 
+      else { 
               param_arr[i].id = memory_num;
               pthread_create(&thread_arr[i], NULL, run_memory, &param_arr[i]);
       }
     } else {
-      /*
-       * Hook for gdb. Inside gdb, go to the main() stackframe and run:
-       * 1. set var zzz = 0
-       * 2. contiune
-       */
-      /*int zzz = 1;
-      while(zzz == 1) {
-              sleep(1);
-      }*/
-
       param_arr[i].id = i;
       param_arr[i].base_port_index = base_port_index;
       param_arr[i].num_server_ports = num_server_ports;
