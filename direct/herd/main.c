@@ -1,9 +1,9 @@
 #include "main.h"
-#include <getopt.h>
 #include "hrd.h"
 #include "mica.h"
+#include <getopt.h>
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   /* Use small queues to reduce cache pressure */
   assert(HRD_Q_DEPTH == 128);
 
@@ -20,8 +20,8 @@ int main(int argc, char* argv[]) {
   int num_threads = -1;
   int is_client = -1, machine_id = -1, postlist = -1, update_percentage = -1;
   int base_port_index = -1, num_server_ports = -1, num_client_ports = -1;
-  struct thread_params* param_arr;
-  pthread_t* thread_arr;
+  struct thread_params *param_arr;
+  pthread_t *thread_arr;
   int memory_num = -1;
 
   static struct option opts[] = {
@@ -44,40 +44,40 @@ int main(int argc, char* argv[]) {
       break;
     }
     switch (c) {
-      case 'M':
-        is_master = atoi(optarg);
-        assert(is_master == 1);
-        break;
-      case 't':
-        num_threads = atoi(optarg);
-        break;
-      case 'b':
-        base_port_index = atoi(optarg);
-        break;
-      case 'N':
-        num_server_ports = atoi(optarg);
-        break;
-      case 'n':
-        num_client_ports = atoi(optarg);
-        break;
-      case 'c':
-        is_client = atoi(optarg);
-        break;
-      case 'u':
-        update_percentage = atoi(optarg);
-        break;
-      case 'm':
-        machine_id = atoi(optarg);
-        break;
-      case 'p':
-        postlist = atoi(optarg);
-        break;
-      case 'r':
-        memory_num = atoi(optarg);
-        break;
-      default:
-        printf("Invalid argument %d\n", c);
-        assert(false);
+    case 'M':
+      is_master = atoi(optarg);
+      assert(is_master == 1);
+      break;
+    case 't':
+      num_threads = atoi(optarg);
+      break;
+    case 'b':
+      base_port_index = atoi(optarg);
+      break;
+    case 'N':
+      num_server_ports = atoi(optarg);
+      break;
+    case 'n':
+      num_client_ports = atoi(optarg);
+      break;
+    case 'c':
+      is_client = atoi(optarg);
+      break;
+    case 'u':
+      update_percentage = atoi(optarg);
+      break;
+    case 'm':
+      machine_id = atoi(optarg);
+      break;
+    case 'p':
+      postlist = atoi(optarg);
+      break;
+    case 'r':
+      memory_num = atoi(optarg);
+      break;
+    default:
+      printf("Invalid argument %d\n", c);
+      assert(false);
     }
   }
 
@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
     master_params.num_memory = memory_num;
 
     pthread_t master_thread;
-    pthread_create(&master_thread, NULL, run_master, (void*)&master_params);
+    pthread_create(&master_thread, NULL, run_master, (void *)&master_params);
     pthread_join(master_thread, NULL);
     exit(0);
   }
@@ -132,12 +132,11 @@ int main(int argc, char* argv[]) {
       param_arr[i].num_client_ports = num_client_ports;
       param_arr[i].update_percentage = update_percentage;
 
-      if(memory_num==-1)
-              pthread_create(&thread_arr[i], NULL, run_client, &param_arr[i]);
-      else
-      { 
-              param_arr[i].id = memory_num;
-              pthread_create(&thread_arr[i], NULL, run_memory, &param_arr[i]);
+      if (memory_num == -1)
+        pthread_create(&thread_arr[i], NULL, run_client, &param_arr[i]);
+      else {
+        param_arr[i].id = memory_num;
+        pthread_create(&thread_arr[i], NULL, run_memory, &param_arr[i]);
       }
     } else {
       /*

@@ -6,15 +6,18 @@
 
 #include <atomic>
 #include <mutex>
-#include <unordered_map>
 #include <queue>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
 int mitsume_benchmark(struct mitsume_ctx_clt *local_ctx_clt);
-const static char MITSUME_YCSB_WORKLOAD_A_STRING[] = "workload/ycsb/workloada_%d";
-const static char MITSUME_YCSB_WORKLOAD_B_STRING[] = "workload/ycsb/workloadb_%d";
-const static char MITSUME_YCSB_WORKLOAD_C_STRING[] = "workload/ycsb/workloadc_%d";
+const static char MITSUME_YCSB_WORKLOAD_A_STRING[] =
+    "workload/ycsb/workloada_%d";
+const static char MITSUME_YCSB_WORKLOAD_B_STRING[] =
+    "workload/ycsb/workloadb_%d";
+const static char MITSUME_YCSB_WORKLOAD_C_STRING[] =
+    "workload/ycsb/workloadc_%d";
 
 #define MITSUME_BENCHMARK_WORKLOAD_NAME_LEN 256
 #define MITSUME_YCSB_SIZE 1000000
@@ -37,5 +40,5 @@ const static char MITSUME_YCSB_WORKLOAD_C_STRING[] = "workload/ycsb/workloadc_%d
 #define MITSUME_BENCHMARK_SIZE 1000
 #define MITSUME_BENCHMARK_TIME 100000
 #define MITSUME_BENCHMARK_RUN_TIME 10
-    
+
 #endif

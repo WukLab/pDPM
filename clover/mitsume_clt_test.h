@@ -2,19 +2,18 @@
 #define MITSUME_CLT_TEST
 #include "mitsume.h"
 
-
-#include "unordered_map"
-#include "mutex"
-#include <unistd.h>
 #include "mitsume_clt_tool.h"
 #include "mitsume_tool.h"
+#include "mutex"
+#include "unordered_map"
+#include <unistd.h>
 
 #include "mitsume_benchmark.h"
 
-
 using namespace std;
 int mitsume_clt_test(struct mitsume_ctx_clt *client_ctx);
-int mitsume_test_thread(int thread_num, struct mitsume_ctx_clt *local_ctx_clt, void* (*fun_ptr)(void *input_metadata));
+int mitsume_test_thread(int thread_num, struct mitsume_ctx_clt *local_ctx_clt,
+                        void *(*fun_ptr)(void *input_metadata));
 void *mitsume_test_open(void *input_metadata);
 
 #define MITSUME_CLT_TEST_THREAD_NUM 4
@@ -32,7 +31,7 @@ void *mitsume_test_open(void *input_metadata);
 #define MITSUME_TEST_SLEEP_TIMEOUT 1
 
 #define MITSUME_TEST_WORKLOAD_NAME_LEN 256
-const static char MITSUME_TEST_WORKLOAD_UNIFORM_STRING[] = "workload/uniform_%d";
-
+const static char MITSUME_TEST_WORKLOAD_UNIFORM_STRING[] =
+    "workload/uniform_%d";
 
 #endif

@@ -33,8 +33,9 @@
 #define NUM_MEMORY MICA_NUM_MEMORY
 
 /* Performance options */
-#define WINDOW_SIZE MITSUME_MICA_WINDOW_SIZE /* Outstanding requests kept by each client */
-#define NUM_UD_QPS 1   /* Number of UD QPs per port */
+#define WINDOW_SIZE                                                            \
+  MITSUME_MICA_WINDOW_SIZE /* Outstanding requests kept by each client */
+#define NUM_UD_QPS 1       /* Number of UD QPs per port */
 #define USE_POSTLIST 1
 
 #define UNSIG_BATCH 2 /* XXX Check if increasing this helps */
@@ -44,7 +45,7 @@
 #define MASTER_SHM_KEY 24
 //#define RR_SIZE (16 * 1024 * 1024) /* Request region size */
 #define RR_SIZE (36 * 1024 * 1024) /* Request region size */
-#define OFFSET(wn, cn, ws) \
+#define OFFSET(wn, cn, ws)                                                     \
   ((wn * NUM_CLIENTS * WINDOW_SIZE) + (cn * WINDOW_SIZE) + ws)
 
 struct thread_params {
@@ -57,7 +58,7 @@ struct thread_params {
   int num_memory;
 };
 
-void* run_master(void* arg);
-void* run_worker(void* arg);
-void* run_client(void* arg);
-void* run_memory(void* arg);
+void *run_master(void *arg);
+void *run_worker(void *arg);
+void *run_client(void *arg);
+void *run_memory(void *arg);

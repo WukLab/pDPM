@@ -21,7 +21,7 @@
 #define HERD_NUM_KEYS MICA_NUM_KEYS
 
 #define HERD_VALUE_SIZE MICA_HERD_VALUE_SIZE
-#define HERD_SPACE_SIZE (HERD_VALUE_SIZE+64)
+#define HERD_SPACE_SIZE (HERD_VALUE_SIZE + 64)
 /* Request sizes */
 #define HERD_GET_REQ_SIZE (16 + 1) /* 16 byte key + opcode */
 
@@ -36,8 +36,9 @@
 #define NUM_REPLICATION MICA_NUM_REPLICATION
 
 /* Performance options */
-#define WINDOW_SIZE MITSUME_MICA_WINDOW_SIZE /* Outstanding requests kept by each client */
-#define NUM_UD_QPS 1   /* Number of UD QPs per port */
+#define WINDOW_SIZE                                                            \
+  MITSUME_MICA_WINDOW_SIZE /* Outstanding requests kept by each client */
+#define NUM_UD_QPS 1       /* Number of UD QPs per port */
 #define USE_POSTLIST 1
 
 #define UNSIG_BATCH 64 /* XXX Check if increasing this helps */
@@ -47,7 +48,7 @@
 #define MASTER_SHM_KEY 24
 //#define RR_SIZE (16 * 1024 * 1024) /* Request region size */
 #define RR_SIZE (16 * 1024 * 1024) /* Request region size */
-#define OFFSET(wn, cn, ws) \
+#define OFFSET(wn, cn, ws)                                                     \
   ((wn * NUM_CLIENTS * WINDOW_SIZE) + (cn * WINDOW_SIZE) + ws)
 
 struct thread_params {
@@ -60,7 +61,7 @@ struct thread_params {
   int num_memory;
 };
 
-void* run_master(void* arg);
-void* run_worker(void* arg);
-void* run_client(void* arg);
-void* run_memory(void* arg);
+void *run_master(void *arg);
+void *run_worker(void *arg);
+void *run_client(void *arg);
+void *run_memory(void *arg);
