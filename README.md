@@ -34,3 +34,19 @@ Coming soon.
 [Yiying Zhang](https://cseweb.ucsd.edu/~yiying/).
 
 Code was developed by Shin-Yeh Tsai at 2018-2019 during his time at Purdue University.
+
+## Cite
+
+To cite our pDPM paper, please use the following bibtex:
+
+```
+@inproceedings {ATC20-pDPM,
+title = {{Disaggregating Persistent Memory and Controlling Them Remotely: An Exploration of Passive Disaggregated Key-Value Stores}},
+author = {Shin-Yeh Tsai and Yizhou Shan and Yiying Zhang},
+booktitle = {2020 {USENIX} Annual Technical Conference ({USENIX} {ATC} 20)},
+year = {2020},
+url = {https://www.usenix.org/conference/atc20/presentation/tsai},
+publisher = {{USENIX} Association},
+month = jul,
+}
+```
