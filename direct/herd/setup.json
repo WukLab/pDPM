@@ -1,6 +1,0 @@
-prefix="wuklab"
-controller=()
-clients=(20 21 22 23 24 25 26 27 02)
-
-pass_others=(${controller[@]} ${clients[@]})
-path="ys/DPM-Direct/herd"
