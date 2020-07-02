@@ -1,8 +1,8 @@
 # Passive Disaggregated Persistent Memory (pDPM, ATC'20)
 
 [[USENIX ATC 2020 Paper]](https://cseweb.ucsd.edu/~yiying/pDPM-ATC20.pdf)
-[[Slide]](./Documentation/atc20-paper177-presentation-slides.pdf)
-[[Slide-Short]](./Documentation/ATC20-dDPM-slides-short.pdf)
+[[Slide]](./Documentation/ATC20-pDPM-slides.pdf)
+[[Slide-Short]](./Documentation/ATC20-pDPM-slides-short.pdf)
 
 ## pDPM
 
