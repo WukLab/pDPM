@@ -2,8 +2,7 @@
 
 [[USENIX ATC 2020 Paper]](https://cseweb.ucsd.edu/~yiying/pDPM-ATC20.pdf)
 [[Slide]](./Documentation/atc20-paper177-presentation-slides.pdf)
-[[Keynote]](./Documentation/ATC20-pDPM-07-2020-long.key)
-[[Keynote-iCloud]](https://www.icloud.com/keynote/0Ox0HGeoa5L1pQ7txzyU_RkUA#ATC20-pDPM-iCloud-Public)
+[[Slide-Short]](./Documentation/ATC20-dDPM-slides-short.pdf)
 
 ## pDPM
 
