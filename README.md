@@ -1,8 +1,9 @@
 # Passive Disaggregated Persistent Memory at USENIX ATC 2020
 
-[**USENIX ATC 2020 Paper**](https://cseweb.ucsd.edu/~yiying/pDPM-ATC20.pdf)  &nbsp;
-[**Slide**](./Documentation/ATC20-pDPM-slides.pdf)  &nbsp;
-[**Slide-Short**](./Documentation/ATC20-pDPM-slides-short.pdf)
+[**[USENIX ATC 2020 Paper]**](https://cseweb.ucsd.edu/~yiying/pDPM-ATC20.pdf)  &nbsp;
+[**[Slide]**](./Documentation/ATC20-pDPM-slides.pdf)  &nbsp;
+[**[Slide-Short]**](./Documentation/ATC20-pDPM-slides-short.pdf) &nbsp;
+[**[Talk]**](https://www.youtube.com/watch?v=Oexu-3Sfbxk&t=163s)
 
 ## pDPM
 
