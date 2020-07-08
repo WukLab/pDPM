@@ -27,4 +27,5 @@ if [[ $# == 0 ]] || [[ "$1" == "-h" ]]; then
 fi
 
 #LD_PRELOAD=libhugetlbfs.so HUGETLB_MORECORE=yes numactl --physcpubind=0 --localalloc ./init -b 1 -S 1 -I $1 -d $device -L 2
+device=1
 ./init -b 1 -S 1 -I $1 -d $device -L 2

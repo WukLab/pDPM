@@ -1,18 +1,8 @@
-#prefix="cloudlab"
-#others=(0 1 2 3)
-#device=0
-#path="RDMASecurity/Code"
-
 prefix="wuklab"
 others=(20 21 22 23 24 25 26 27 28)
 device=1
 path="sy/Mitsume/userspace"
 memcached_machine="wuklab29"
-
-#prefix="wuklab"
-#others=(00 02 08)
-#device=0
-#path="sy/RDMASecurity/Code"
 
 pass_others=(${others[@]})
 all=(${others[@]})

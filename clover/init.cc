@@ -1,4 +1,3 @@
-
 #include "client.h"
 #include "memory.h"
 #include "mitsume.h"
@@ -6,21 +5,12 @@
 #include <getopt.h>
 #include <stdio.h>
 
-//#include "ponefive.h"
 int main(int argc, char *argv[]) {
-  /* All requests should fit into the master's request region */
-  // assert(sizeof(struct mica_op) *	NUM_CLIENTS * NUM_WORKERS * WINDOW_SIZE <
-  // RR_SIZE);
-
-  /* Unsignaled completion checks. worker.c does its own check w/ @postlist */
-  // assert(UNSIG_BATCH >= WINDOW_SIZE);	/* Pipelining check for clients
-  // */ assert(HRD_Q_DEPTH >= 2 * UNSIG_BATCH);	/* Queue capacity check */
   int i, c;
   int is_master = -1;
   int num_threads = 1;
   int is_client = -1, machine_id = -1, is_server = -1, is_memory = -1;
   int base_port_index = -1;
-  // int num_clients=-1, num_servers=-1, num_memorys=-1;
   int num_clients = MITSUME_CLT_NUM, num_servers = MITSUME_CON_NUM,
       num_memorys = MITSUME_MEM_NUM;
   int device_id = 0;
@@ -89,19 +79,6 @@ int main(int argc, char *argv[]) {
   assert(base_port_index >= 0 && base_port_index <= 8);
   if (interaction_mode)
     MITSUME_PRINT("[INTERACTION MODE]\n");
-
-  /* Handle the master process specially */
-  /*if(is_master == 1) {
-          struct thread_params master_params;
-          master_params.num_server_ports = num_server_ports;
-          master_params.base_port_index = base_port_index;
-
-          pthread_t master_thread;
-          pthread_create(&master_thread,
-                  NULL, run_master, (void *) &master_params);
-          pthread_join(master_thread, NULL);
-          exit(0);
-  }*/
 
   /* Common sanity checks for worker process and per-machine client process */
   assert((is_client + is_server + is_memory) == -1);
