@@ -26,6 +26,20 @@ if [[ $# == 0 ]] || [[ "$1" == "-h" ]]; then
 	exit 1
 fi
 
-#LD_PRELOAD=libhugetlbfs.so HUGETLB_MORECORE=yes numactl --physcpubind=0 --localalloc ./init -b 1 -S 1 -I $1 -d $device -L 2
-device=1
-./init -b 1 -S 1 -I $1 -d $device -L 2
+#
+# HACK: Specify your IB DEVICE ID starting from 0.
+#       Follow the sequence of ibv_devinfo.
+#
+ibdev_id=0
+
+#
+# num-clients: number of computing nodes
+# num-memory: number of memory nodes
+# memcached-server-ip: ip of memcached server instance
+#
+./init -b 1 -S 1 -I $1			\
+       -L 2				\
+       -device-id $ibdev_id		\
+       --num-clients=1			\
+       --num-memory=1			\
+       --memcached-server-ip=127.0.0.1

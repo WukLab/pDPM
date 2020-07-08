@@ -15,7 +15,6 @@ int main(int argc, char *argv[]) {
       num_memorys = MITSUME_MEM_NUM;
   int device_id = 0;
   int num_loopback = -1;
-  int interaction_mode = 0;
   struct configuration_params *param_arr;
   pthread_t *thread_arr;
 
@@ -25,11 +24,12 @@ int main(int argc, char *argv[]) {
       {"num-memorys", 1, NULL, 'm'},     {"is-client", 1, NULL, 'C'},
       {"is-server", 1, NULL, 'S'},       {"is-memory", 1, NULL, 'M'},
       {"machine-id", 1, NULL, 'I'},      {"device-id", 1, NULL, 'd'},
-      {"num-loopbackset", 1, NULL, 'L'}, {NULL, 0, NULL, 0}};
+      {"num-loopbackset", 1, NULL, 'L'}, {"memcached-server-ip", 1, NULL, 'X'},
+      {NULL, 0, NULL, 0}};
 
   /* Parse and check arguments */
   while (1) {
-    c = getopt_long(argc, argv, "h:b:c:m:s:C:S:I:d:L:M:", opts, NULL);
+    c = getopt_long(argc, argv, "h:b:c:m:s:C:S:I:d:L:M:X:", opts, NULL);
     if (c == -1) {
       break;
     }
@@ -68,23 +68,27 @@ int main(int argc, char *argv[]) {
     case 'L':
       num_loopback = atoi(optarg);
       break;
+    case 'X':
+      strncpy(MEMCACHED_IP, optarg, sizeof(MEMCACHED_IP));
+      printf("%s:%s: memcached-server-ip = %s\n", __FILE__, __func__, MEMCACHED_IP);
+      break;
     default:
       printf("Invalid argument %d\n", c);
       assert(0);
     }
   }
-  MITSUME_PRINT("size of %d %d\n", (int)sizeof(struct mitsume_msg),
-                (int)sizeof(struct mitsume_large_msg));
+
   /* Common checks for all (master, workers, clients */
   assert(base_port_index >= 0 && base_port_index <= 8);
-  if (interaction_mode)
-    MITSUME_PRINT("[INTERACTION MODE]\n");
 
   /* Common sanity checks for worker process and per-machine client process */
   assert((is_client + is_server + is_memory) == -1);
   assert((num_loopback) >= 0);
 
+  printf("%s:%s: num_clients=%d, num_memorys=%d\n",
+         __FILE__, __func__, num_clients, num_memorys);
   if (is_client == 1) {
+    // CN
     assert(num_clients >= 1);
     assert(num_servers >= 1);
     assert(num_memorys >= 1);
@@ -92,15 +96,13 @@ int main(int argc, char *argv[]) {
     assert(num_threads >= 1);
     assert(machine_id >= 0);
   } else if (is_server == 1) {
-    // assert(num_threads == -1);	/* Number of server threads is fixed */
-    // num_threads = NUM_WORKERS;	/* Needed to allocate thread structs later
-    // */
+    // metadata server
     assert(num_clients >= 1);
     assert(num_servers >= 1);
     assert(num_memorys >= 1);
     assert(machine_id >= 0);
-  } else // memory
-  {
+  } else {
+    // MN
     assert(num_clients >= 1);
     assert(num_servers >= 1);
     assert(num_memorys >= 1);
@@ -109,6 +111,7 @@ int main(int argc, char *argv[]) {
     assert(num_memorys == MITSUME_MEM_NUM);
     assert(machine_id >= 0);
   }
+
   param_arr = (struct configuration_params *)malloc(
       num_threads * sizeof(struct configuration_params));
   thread_arr = (pthread_t *)malloc(num_threads * sizeof(pthread_t));

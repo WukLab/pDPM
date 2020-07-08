@@ -7,6 +7,8 @@
 
 #define MEMCACHED_MAX_NAME_LEN 256
 
+extern char MEMCACHED_IP[64];
+
 void memcached_publish_rcqp(struct ib_inf *inf, int num, const char *qp_name);
 void memcached_publish_udqp(struct ib_inf *inf, int num, const char *qp_name);
 struct ib_qp_attr *memcached_get_published_qp(const char *qp_name);

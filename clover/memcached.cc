@@ -1,8 +1,7 @@
 #include "memcached.h"
 
 __thread memcached_st *memc = NULL;
-// const char *MEMCACHED_IP = "128.46.115.36";
-const char *MEMCACHED_IP = "10.0.0.129";
+char MEMCACHED_IP[64];
 
 memcached_st *memcached_create_memc(void) {
   memcached_server_st *servers = NULL;

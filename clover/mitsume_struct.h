@@ -19,7 +19,6 @@ using namespace std;
 
 #define RSEC_CQ_DEPTH 2048
 
-//#define MEMCACHED_IP "10.0.0.129"
 #include <boost/coroutine/all.hpp>
 #include <boost/thread/shared_mutex.hpp>
 
