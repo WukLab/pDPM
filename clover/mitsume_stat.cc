@@ -5,8 +5,17 @@ atomic<long> mitsume_stat_array_counter[MITSUME_STAT_ARRAY_LENGTH];
 int mitsume_role;
 atomic<long> mitsume_stat_sum_array_number[MITSUME_STAT_SUM_ARRAY_LENGTH];
 atomic<long> mitsume_stat_sum_array_counter[MITSUME_STAT_SUM_ARRAY_LENGTH];
-atomic<long> mitsume_stat_traffic_array_counter[(
-    MITSUME_CON_NUM + MITSUME_CLT_NUM + MITSUME_MEM_NUM)];
+
+/*
+ * XXX
+ * Hack by Yizhou.
+ * 
+ * Since I changed macros to integers, this no longer work.
+ * An upperbind should work.
+ */
+atomic<long> mitsume_stat_traffic_array_counter[128];
+//atomic<long> mitsume_stat_traffic_array_counter[(
+//    MITSUME_CON_NUM + MITSUME_CLT_NUM + MITSUME_MEM_NUM)];
 
 /**
  * mitsume_stat_show: called by `cat /proc/mitsume` - printout all counter

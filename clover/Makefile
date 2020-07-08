@@ -17,6 +17,7 @@ CPPFLAGS := ${ENABLE_DGB} ${LTO} -O2 ${DEBUG} -std=c++14 ${INC} -Wall -Werror -g
 	-Wno-unused-result \
 	-Wno-unused-value \
 	-Wno-unused-function \
+	-Wno-sign-compare \
         -D BOOST_COROUTINES_NO_DEPRECATION_WARNING
 	#-Winline
 
