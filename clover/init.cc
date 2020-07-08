@@ -5,14 +5,16 @@
 #include <getopt.h>
 #include <stdio.h>
 
+int MITSUME_CLT_NUM;
+int MITSUME_MEM_NUM;
+
 int main(int argc, char *argv[]) {
   int i, c;
   int is_master = -1;
   int num_threads = 1;
   int is_client = -1, machine_id = -1, is_server = -1, is_memory = -1;
   int base_port_index = -1;
-  int num_clients = MITSUME_CLT_NUM, num_servers = MITSUME_CON_NUM,
-      num_memorys = MITSUME_MEM_NUM;
+  int num_clients, num_servers = MITSUME_CON_NUM, num_memorys;
   int device_id = 0;
   int num_loopback = -1;
   struct configuration_params *param_arr;
@@ -43,12 +45,14 @@ int main(int argc, char *argv[]) {
       break;
     case 'c':
       num_clients = atoi(optarg);
+      MITSUME_CLT_NUM = num_clients;
       break;
     case 's':
       num_servers = atoi(optarg);
       break;
     case 'm':
       num_memorys = atoi(optarg);
+      MITSUME_MEM_NUM = num_memorys;
       break;
     case 'C':
       is_client = atoi(optarg);
@@ -85,37 +89,30 @@ int main(int argc, char *argv[]) {
   assert((is_client + is_server + is_memory) == -1);
   assert((num_loopback) >= 0);
 
+  printf("%s:%s: This is running as [%s]!\n",
+         __FILE__, __func__, (is_client == 1) ? "CN" : (is_memory == 1) ? "MN" : "MS");
   printf("%s:%s: num_clients=%d, num_memorys=%d\n",
          __FILE__, __func__, num_clients, num_memorys);
-  if (is_client == 1) {
-    // CN
-    assert(num_clients >= 1);
-    assert(num_servers >= 1);
-    assert(num_memorys >= 1);
 
-    assert(num_threads >= 1);
-    assert(machine_id >= 0);
-  } else if (is_server == 1) {
-    // metadata server
-    assert(num_clients >= 1);
-    assert(num_servers >= 1);
-    assert(num_memorys >= 1);
-    assert(machine_id >= 0);
-  } else {
-    // MN
-    assert(num_clients >= 1);
-    assert(num_servers >= 1);
-    assert(num_memorys >= 1);
-    assert(num_clients == MITSUME_CLT_NUM);
-    assert(num_servers == MITSUME_CON_NUM);
-    assert(num_memorys == MITSUME_MEM_NUM);
-    assert(machine_id >= 0);
+  if (num_clients < 1 || num_servers < 1 || num_memorys < 1) {
+    printf("%s:%s: Invalid num_clients=%d, num_memorys=%d num_servers=%d\n",
+           __FILE__, __func__, num_clients, num_memorys, num_servers);
+    exit(0);
   }
 
-  param_arr = (struct configuration_params *)malloc(
-      num_threads * sizeof(struct configuration_params));
+  if (machine_id < 0) {
+    printf("Invalid machine_id %d\n", machine_id);
+    exit(0);
+  }
+
+  if (is_client == 1) {
+    assert(num_threads >= 1);
+  }
+
+  param_arr = (struct configuration_params *)malloc(num_threads * sizeof(struct configuration_params));
   thread_arr = (pthread_t *)malloc(num_threads * sizeof(pthread_t));
   assert(thread_arr);
+
   {
     param_arr[0].base_port_index = base_port_index;
     param_arr[0].num_servers = num_servers;
@@ -133,8 +130,10 @@ int main(int argc, char *argv[]) {
     if (is_memory >= 0)
       run_memory(&param_arr[0]);
   }
+
   while (1)
     ;
+
   for (i = 0; i < num_threads; i++) {
     pthread_join(thread_arr[i], NULL);
   }
