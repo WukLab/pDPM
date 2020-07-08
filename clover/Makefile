@@ -13,10 +13,11 @@ MICA_HOME := ../../mica2/src
 INC	:= -I ${HOTS_HOME} -I ${MICA_HOME}
 
 #DEBUG := -DNDEBUG
-CPPFLAGS := ${ENABLE_DGB} ${LTO} -O2 ${DEBUG} -std=c++11 ${INC} -Wall -Werror -g \
+CPPFLAGS := ${ENABLE_DGB} ${LTO} -O2 ${DEBUG} -std=c++14 ${INC} -Wall -Werror -g \
 	-Wno-unused-result \
 	-Wno-unused-value \
-	-Wno-unused-function
+	-Wno-unused-function \
+        -D BOOST_COROUTINES_NO_DEPRECATION_WARNING
 	#-Winline
 
 LDFLAGS := ${ENABLE_DGB} ${LTO} -O2 -libverbs -lrt -pthread -lmemcached -lnuma -g \

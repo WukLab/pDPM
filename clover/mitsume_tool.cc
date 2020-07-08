@@ -1165,12 +1165,10 @@ int tttest() {
     for (int coro_i = 0; coro_i < 5; coro_i++) {
       if (coro_i == 0)
         coro_arr[i][coro_i] =
-            coro_call_t(bind(master_func, _1, make_tuple(i, coro_i)),
-                        attributes(fpu_not_preserved));
+            coro_call_t(bind(master_func, _1, make_tuple(i, coro_i)));
       else
         coro_arr[i][coro_i] =
-            coro_call_t(bind(slave_func, _1, make_tuple(i, coro_i)),
-                        attributes(fpu_not_preserved));
+            coro_call_t(bind(slave_func, _1, make_tuple(i, coro_i)));
       printf("issue %ld-%d\n", i, coro_i);
     }
   }

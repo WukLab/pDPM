@@ -178,15 +178,13 @@ void *mitsume_benchmark_coroutine(void *input_metadata) {
       local_inf->coro_arr[coro_i] =
           coro_call_t(bind(mitsume_benchmark_master_func, _1,
                            make_tuple(thread_metadata, coro_i, op_key,
-                                      target_key, &share_index, &local_op)),
-                      attributes(fpu_not_preserved));
+                                      target_key, &share_index, &local_op)));
     } else {
       local_inf->coro_queue.push(coro_i);
       local_inf->coro_arr[coro_i] =
           coro_call_t(bind(mitsume_benchmark_slave_func, _1,
                            make_tuple(thread_metadata, coro_i, op_key,
-                                      target_key, &share_index, &local_op)),
-                      attributes(fpu_not_preserved));
+                                      target_key, &share_index, &local_op)));
     }
   }
 
