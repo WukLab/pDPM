@@ -39,6 +39,7 @@ fi
 # MEMCACHED_SERVER_IP: ip of memcached server instance
 #
 ibdev_id=0
+ibdev_base_port=1
 NR_CN=1
 NR_MN=1
 MEMCACHED_SERVER_IP="127.0.0.1"
