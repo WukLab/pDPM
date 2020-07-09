@@ -1,4 +1,4 @@
-# Clover Tutorial
+# Tutorial for Clover
 
 ## Overview
 
@@ -17,6 +17,8 @@ which are used to build all to all connection by Clover automatically.
 ## Run
 
 ### Quickstart
+
+Switch folder to `pDPM/clover/`.
 
 Suppose we use three servers `[S0, S1, and S2]` to run a `[1 MS, 1 CN, and 1 MN]` setting. We will run both MS and memcached on S0; a single MN on S1; and a single CN on S2. To start, run the following script at each server one by one:
 - S0: `memcached -u root -I 128m -m 2048`
@@ -46,6 +48,12 @@ NR_MN=1
 Third, specify the IP address of the memcached server instance, which is expressed by the following variable:
 ```bash
 MEMCACHED_SERVER_IP="192.168.0.1"
+```
+
+Fourth, we could choose RoCE and Infiniband mode by enabling one of the following lines at `ibsetup.h`:
+```c
+#define RSEC_NETWORK_MODE    RSEC_NETWORK_IB
+#define RSEC_NETWORK_MODE    RSEC_NETWORK_ROCE
 ```
 
 All three scripts: `run_ms.sh`, `run_memory,sh`, and `run_clients.sh` at all machines need to have the same configuration. Otherwise the experiment will not start.

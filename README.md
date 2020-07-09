@@ -38,8 +38,8 @@ For hardware, each machine must have a RDMA NIC card (e.g., Mellanox CX5) and co
 
 Detailed tutorials:
 - [Clover](./Documentation/clover.md)
+- [Central](./Documentation/central.md)
 - [Direct](./Documentation/direct.md)
-- [Clover](./Documentation/central.md)
 
 ## Contact
 
