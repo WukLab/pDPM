@@ -17,7 +17,7 @@ pDPM lowers owning and energy cost, also avoids storage node being the processin
 
 ## pDPM-based Key-Value Stores
 
-Based on where to process and manage data, we build three pDPM-based key-value stores: pDPM-Direct, pDPM-Cental, and Clover. All three pDPM systems run on top of userspace libibverbs, no special kernel modifications are needed.
+Based on where to process and manage data, we build three pDPM-based key-value stores: pDPM-Direct, pDPM-Cental, and Clover.
 
 <!-- Both pDPM-Direct and pDPM-Central are developed based on [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). -->
 
@@ -27,7 +27,19 @@ Based on where to process and manage data, we build three pDPM-based key-value s
 
 ## Tutorial
 
-Coming soon.
+All three systems are userspace programs, no special kernel modifications are needed. They are able to run on top of any popular Linux distributions.
+The following software packages are required:
+- libibverbs
+- memcached
+- numactl
+- C++ boost coroutine
+
+For hardware, each machine must have a RDMA NIC card (e.g., Mellanox CX5) and connected by a switch. All systems are able to run on both RoCE and Infiniband mode.
+
+Detailed tutorials:
+- [Clover](./Documentation/clover.md)
+- [Direct](./Documentation/direct.md)
+- [Clover](./Documentation/central.md)
 
 ## Contact
 
