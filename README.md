@@ -17,7 +17,7 @@ pDPM lowers owning and energy cost, also avoids storage node being the processin
 
 ## pDPM-based Key-Value Stores
 
-Based on where to process and manage data, we build three pDPM-based key-value stores: pDPM-Direct, pDPM-Cental, and Clover.
+Based on where to process and manage data, we build three pDPM-based key-value stores: pDPM-Direct, pDPM-Cental, and Clover. All of them provide GET/PUT interfaces and have been tested against YCSB workload.
 
 <!-- Both pDPM-Direct and pDPM-Central are developed based on [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). -->
 
@@ -27,19 +27,22 @@ Based on where to process and manage data, we build three pDPM-based key-value s
 
 ## Tutorial
 
-All three systems are userspace programs, no special kernel modifications are needed. They are able to run on top of any popular Linux distributions.
-The following software packages are required:
+All systems in this repository are _userspace_ programs, and requires no special kernel modifications. They should be able to run on top of any popular Linux distributions with the following software packages installed:
 - libibverbs
 - memcached
 - numactl
 - C++ boost coroutine
 
-For hardware, each machine must have a RDMA NIC card (e.g., Mellanox CX5) and connected by a switch. All systems are able to run on both RoCE and Infiniband mode.
+For hardware, each machine must have a RDMA NIC card (e.g., Mellanox CX5) and connected by a switch. All systems are able to run on both RoCE and Infiniband mode. If you do not have such testbed, you can consider using [CloudLab](https://www.cloudlab.us/).
 
-Detailed tutorials:
+At a high-level, the setup flows of all systems are very similar: start a server instance, then start a set of simulated passive memory instances, and finally start a set of compute instances. All of them leverage memcached as a centralized RDMA-metdata store.
+
+Clover is a vanilla development effort. Both pDPM-Central and pDPM-Direct build on top of a high-performance two-sided KVS called [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). For detailed setup tutorials, please refer to the following documents:
 - [Clover](./Documentation/clover.md)
 - [Central](./Documentation/central.md)
 - [Direct](./Documentation/direct.md)
+
+Code was developed by [Shin-Yeh Tsai](https://www.cs.purdue.edu/homes/tsai46/) at 2018-2019 during his doctoral research at Purdue University.
 
 ## Contact
 
@@ -47,7 +50,7 @@ Detailed tutorials:
 [Yizhou Shan](http://lastweek.io),
 [Yiying Zhang](https://cseweb.ucsd.edu/~yiying/).
 
-Code was developed by Shin-Yeh Tsai at 2018-2019 during his time at Purdue University.
+For more disaggregation-related research, please check out our publication list at [WukLab.io](http://wuklab.io).
 
 ## Cite
 

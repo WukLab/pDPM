@@ -27,5 +27,5 @@ Most of the runtime configurations are controlled by bash scripts. We will use `
 
 First, specify the memcached server IP. The script is able to start (and kill) memcached instance automatically. We should use the IP address of the coordinator.
 ```bash
-export HRD_REGISTRY_IP="137.110.222.243"
+export HRD_REGISTRY_IP="192.168.0.1"
 ```

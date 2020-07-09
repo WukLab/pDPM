@@ -28,6 +28,8 @@ Suppose we use three servers `[S0, S1, and S2]` to run a `[1 MS, 1 CN, and 1 MN]
 
 The parameter passed to each script is a static unique Clover node ID. Usually the MS uses 0. CNs and MNs will span a contiguous range.
 
+Once experiment finishes, run `pkill.sh` to terminate all relevant processes.
+
 ### Configurations
 
 Most of the runtime configurations are controlled by bash scripts. Since each script file is very similar, we will use `run_ms.sh` to demonstrate.
