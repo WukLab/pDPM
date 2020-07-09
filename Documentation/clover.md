@@ -30,7 +30,7 @@ The parameter passed to each script is a static unique Clover node ID. Usually t
 
 ### Configurations
 
-There are several important configurations for each new setup. Since each script is similar, we will use `run_ms.sh` to demonstrate.
+Most of the runtime configurations are controlled by bash scripts. Since each script file is very similar, we will use `run_ms.sh` to demonstrate.
 
 First, specify the RNIC device via a unique device ID and port index. The device ID starts from 0 and follows the sequence reported by `ibv_devinfo`. The port index is per-device and starts from 1. We can configure them via the following two variables in the script:
 ```bash
