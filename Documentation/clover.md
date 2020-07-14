@@ -63,3 +63,4 @@ All three scripts: `run_ms.sh`, `run_memory,sh`, and `run_clients.sh` at all mac
 ## Code Internal
 
 - All instances' entry point is at `init.cc:main()`. They act differently based on the parameters.
+- Client testing code entry point is at `mitsume_benchmark.cc:mitsume_benchmark()`
