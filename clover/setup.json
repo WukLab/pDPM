@@ -1,9 +1,0 @@
-prefix="wuklab"
-others=(20 21 22 23 24 25 26 27 28)
-device=1
-path="sy/Mitsume/userspace"
-memcached_machine="wuklab29"
-
-pass_others=(${others[@]})
-all=(${others[@]})
-interaction=0
