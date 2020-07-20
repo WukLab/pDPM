@@ -27,13 +27,13 @@ Based on where to process and manage data, we build three pDPM-based key-value s
 
 ## Tutorial
 
-All systems in this repository are _userspace_ programs, and requires no special kernel modifications. They should be able to run on top of any popular Linux distributions with the following software packages installed:
+All systems in this repository are _userspace_ programs, and require no special kernel modifications. They are able to run on top of any popular Linux distributions with the following software packages pre-installed:
 - libibverbs
 - memcached
 - numactl
 - C++ boost coroutine
 
-For hardware, each machine must have a RDMA NIC card (e.g., Mellanox CX5) and connected by a switch. All systems are able to run on both RoCE and Infiniband mode. If you do not have such testbed, you can consider using [CloudLab](https://www.cloudlab.us/).
+For hardware, each machine should have a RDMA NIC card (e.g., Mellanox ConnectX-5) and connected via a Infiniband or Ethernet switch. All systems are able to run on both RoCE and Infiniband mode. If you do not have such testbed, please consider using [CloudLab](https://www.cloudlab.us/).
 
 At a high-level, the setup flows of all systems are very similar: start a server instance, then start a set of simulated passive memory instances, and finally start a set of compute instances. All of them leverage memcached as a centralized RDMA-metdata store.
 
@@ -54,7 +54,7 @@ For more disaggregation-related research, please check out our publication list 
 
 ## Cite
 
-To cite our pDPM paper, please use the following bibtex:
+To cite our pDPM paper, please consider using the following bibtex:
 
 ```
 @inproceedings {ATC20-pDPM,
