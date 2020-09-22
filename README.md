@@ -1,11 +1,11 @@
-# Passive Disaggregated Persistent Memory at USENIX ATC 2020
+# Passive Disaggregated Persistent Memory (pDPM) at USENIX ATC 2020
 
-[**[USENIX ATC 2020 Paper]**](https://cseweb.ucsd.edu/~yiying/pDPM-ATC20.pdf)  &nbsp;
+[**[USENIX ATC 2020 Paper]**](https://www.usenix.org/conference/atc20/presentation/tsai)  &nbsp;
 [**[Slide]**](./Documentation/ATC20-pDPM-slides.pdf)  &nbsp;
 [**[Slide-Short]**](./Documentation/ATC20-pDPM-slides-short.pdf) &nbsp;
-[**[Talk]**](https://www.youtube.com/watch?v=Oexu-3Sfbxk&t=163s)
+[**[Talk]**](https://www.usenix.org/conference/atc20/presentation/tsai)
 
-## pDPM
+## pDPM Model
 
 We explore an alternative approach of building Disaggregated Persistent Memory (DPM) by treating storage nodes as _passive_ parties that do not perform any data processing or data management tasks, a model we call Passive Disaggregated Persistent Memory, or __pDPM__.
 
