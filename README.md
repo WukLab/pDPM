@@ -27,17 +27,17 @@ Based on where to process and manage data, we build three pDPM-based key-value s
 
 ## Tutorial
 
-All systems in this repository are _userspace_ programs, and require no special kernel modifications. They are able to run on top of any popular Linux distributions with the following software packages pre-installed:
+All systems in this repository are _userspace_ programs, hence no special kernel modifications are necessary. All of them run on top of any popular Linux distributions with the following dependencies:
 - libibverbs
 - memcached
 - numactl
 - C++ boost coroutine
 
-For hardware, each machine should have a RDMA NIC card (e.g., Mellanox ConnectX-5) and connected via a Infiniband or Ethernet switch. All systems are able to run on both RoCE and Infiniband mode. If you do not have such testbed, please consider using [CloudLab](https://www.cloudlab.us/).
+For hardware, each machine should have a RDMA NIC card (e.g., Mellanox ConnectX-5) and connected via a Infiniband or Ethernet switch. All systems are able to run on both RoCE and Infiniband mode. If you do not have such testbed, consider using [CloudLab](https://www.cloudlab.us/).
 
-At a high-level, the setup flows of all systems are very similar: start a server instance, then start a set of simulated passive memory instances, and finally start a set of compute instances. All of them leverage memcached as a centralized RDMA-metdata store.
+The testing flow of all systems is almost the same: a) start a server instance, b) start a set of simulated passive memory instances, and c) start a set of compute instances. All systems use memcached as a centralized metadata store to exchange QP number and RKEY information.
 
-Clover is a vanilla development effort. Both pDPM-Central and pDPM-Direct build on top of a high-performance two-sided KVS called [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). For detailed setup tutorials, please refer to the following documents:
+Clover is a vanilla development effot from Shin-Yeh Tsai. Both pDPM-Central and pDPM-Direct are built on top of a high-performance two-sided KVS called [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). For setup tutorials, please refer to the following documents:
 - [Clover](./Documentation/clover.md)
 - [Central](./Documentation/central.md)
 - [Direct](./Documentation/direct.md)
@@ -50,7 +50,7 @@ Code was developed by [Shin-Yeh Tsai](https://www.cs.purdue.edu/homes/tsai46/) a
 [Yizhou Shan](http://lastweek.io),
 [Yiying Zhang](https://cseweb.ucsd.edu/~yiying/).
 
-For more disaggregation-related research, please check out our publication list at [WukLab.io](http://wuklab.io).
+For more disaggregation-related research, make sure to check out our publication list at [WukLab.io](http://wuklab.io).
 
 ## Cite
 
