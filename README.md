@@ -37,12 +37,12 @@ For hardware, each machine should have a RDMA NIC card (e.g., Mellanox ConnectX-
 
 The testing flow of all systems is almost the same: a) start a server instance, b) start a set of simulated passive memory instances, and c) start a set of compute instances. All systems use memcached as a centralized metadata store to exchange QP number and RKEY information.
 
-Clover is a vanilla development effot from Shin-Yeh Tsai. Both pDPM-Central and pDPM-Direct are built on top of a high-performance two-sided KVS called [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). For setup tutorials, please refer to the following documents:
+Clover is a vanilla development effort. pDPM-Central and pDPM-Direct are built on top of a high-performance two-sided KVS called [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). For setup tutorials, please refer to the following documents:
 - [Clover](./Documentation/clover.md)
 - [Central](./Documentation/central.md)
 - [Direct](./Documentation/direct.md)
 
-Code was developed by [Shin-Yeh Tsai](https://www.cs.purdue.edu/homes/tsai46/) at 2018-2019 during his doctoral research at Purdue University.
+The entire code base was designed and implemented by [Dr. Shin-Yeh Tsai](https://www.cs.purdue.edu/homes/tsai46/) during his doctoral research at Purdue University.
 
 ## Contact
 
