@@ -20,11 +20,11 @@ which are used to build all to all connection by Clover automatically.
 
 Switch folder to `pDPM/clover/`.
 
-Suppose we use three servers `[S0, S1, and S2]` to run a `[1 MS, 1 CN, and 1 MN]` setting. We will run both MS and memcached on S0; a single MN on S1; and a single CN on S2. To start, run the following script at each server one by one:
-- S0: `memcached -u root -I 128m -m 2048`
-- S0: `./run_ms.sh 0`
-- S1: `./run_memory.sh 1`
-- S2: `./run_clients.sh 2`
+Suppose we use three servers `[S0, S1, and S2]` to run a `[1 MS, 1 CN, and 1 MN]` setting. We will run both MS and memcached on S0; a single CN on S1; and a single MN on S2. To start, run the following script at each server one by one:
+- Server-0: `memcached -u root -I 128m -m 2048`
+- Server-0: `./run_ms.sh 0`
+- Server-1: `./run_clients.sh 1`
+- Server-2: `./run_memory.sh 2`
 
 The parameter passed to each script is a static unique Clover node ID. Usually the MS uses 0. CNs and MNs will span a contiguous range.
 
