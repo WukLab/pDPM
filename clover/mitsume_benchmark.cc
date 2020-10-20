@@ -44,7 +44,7 @@ void *mitsume_benchmark_latency(void *input_metadata) {
 
   MITSUME_PRINT("------\n");
   ret = mitsume_tool_open(thread_metadata, key, write, 36,
-                          MITSUME_BENCHMARK_REPLICATION);
+                          MITSUME_EXAMPLE_REPLICATION);
   for (j = 0; j < test_size.size(); j++) {
     before = get_current_ns();
     for (i = 0; i < MITSUME_BENCHMARK_TIME; i++) {
@@ -55,7 +55,7 @@ void *mitsume_benchmark_latency(void *input_metadata) {
         MITSUME_INFO("error %lld %d\n", (unsigned long long int)key, ret);
     }
     after = get_current_ns();
-    cout << test_size[j] << ": average write time(us):"
+    cout << test_size[j] << ": average write time(ns):"
          << (after - before).count() / MITSUME_BENCHMARK_TIME << endl;
 
     before = get_current_ns();
@@ -66,7 +66,7 @@ void *mitsume_benchmark_latency(void *input_metadata) {
         MITSUME_INFO("error %lld %d\n", (unsigned long long int)key, ret);
     }
     after = get_current_ns();
-    cout << test_size[j] << ": average read time(us):"
+    cout << test_size[j] << ": average read time(ns):"
          << (after - before).count() / MITSUME_BENCHMARK_TIME << endl;
   }
 
