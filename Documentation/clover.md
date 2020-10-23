@@ -32,6 +32,7 @@ Once experiment finishes, run `local_kill.sh` to terminate all relevant processe
 
 ### Configurations
 
+#### General
 Most of the runtime configurations are controlled by bash scripts. Since each script file is very similar, we will use `run_ms.sh` to demonstrate.
 
 First, specify the RNIC device via a unique device ID and port index. The device ID starts from 0 and follows the sequence reported by `ibv_devinfo`. The port index is per-device and starts from 1. We can configure them via the following two variables in the script:
@@ -60,7 +61,22 @@ Fourth, we could choose RoCE and Infiniband mode by enabling one of the followin
 
 All three scripts: `run_ms.sh`, `run_memory,sh`, and `run_clients.sh` at all machines need to have the same configuration. Otherwise the experiment will not start.
 
+#### Number of CN threads
+This is controlled by the following macro in `clover/mitsume_benchmark.h`.
+```c
+#define MITSUME_BENCHMARK_THREAD_NUM            8
+```
+
+#### Replication Factor
+The replication factor is expressed [here](https://github.com/WukLab/pDPM/blob/master/clover/mitsume_benchmark.h#L39).
+The default value is 1. To use a larger value, you will need more Clover MNs running.
+Note that the system may report failure if this value is larger than the number of MNs.
+```c
+#define MITSUME_BENCHMARK_REPLICATION           1
+```
+
 ## Code Internal
 
 - All instances' entry point is at `init.cc:main()`. They act differently based on the parameters.
 - Client testing code entry point is at `mitsume_benchmark.cc:mitsume_benchmark()`
+  - There are several available benchmarks. `mitsume_benchmark_latency` is a single threaded benchmark. `mitsume_benchmark_ycsb` is a multithreaded benchmark using YCSB workloads. Make sure you are using the desired benchmark.
