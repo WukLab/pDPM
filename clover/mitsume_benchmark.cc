@@ -344,7 +344,7 @@ void *mitsume_benchmark_latency(void *input_metadata) {
 
   MITSUME_PRINT("------\n");
   ret = mitsume_tool_open(thread_metadata, key, write, 36,
-                          MITSUME_EXAMPLE_REPLICATION);
+                          MITSUME_BENCHMARK_REPLICATION);
   for (j = 0; j < test_size.size(); j++) {
     before = get_current_ns();
     for (i = 0; i < MITSUME_BENCHMARK_TIME; i++) {
