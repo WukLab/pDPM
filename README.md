@@ -29,7 +29,7 @@ Based on where to process and manage data, we build three pDPM-based key-value s
 <img src="./Documentation/pDPM-systems.png" height="360" width="640">
 </p>
 
-## Clasification 
+## Classification 
 
 pDPM is an architecture, which could support many types of usages and applications.
 The KVS is just one way of utilizing pDPM architecture.
