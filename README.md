@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://github.com/WukLab/pDPM/blob/master/Documentation/logo.png" height="250" width="350">
+</p>
+
 # Passive Disaggregated Persistent Memory (pDPM) at USENIX ATC 2020
 
 [**[USENIX ATC 2020 Paper]**](https://www.usenix.org/conference/atc20/presentation/tsai)  &nbsp;
