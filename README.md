@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/WukLab/pDPM/blob/master/Documentation/logo.png" height="250" width="250">
+<img src="https://github.com/WukLab/pDPM/blob/master/Documentation/logo.png" height="220" width="250">
 </p>
 
 __Passive Disaggregated Persistent Memory (pDPM) at USENIX ATC 2020__
@@ -16,7 +16,7 @@ We explore an alternative approach of building Disaggregated Persistent Memory (
 pDPM lowers owning and energy cost, also avoids storage node being the processing scalability bottleneck. pDPM is an instance of _passive disaggregation_ approach and has largely been overlooked in the past. Our work does a thorough exploration of this area.
 
 <p align="center">
-<img src="./Documentation/disaggregation-research-spectrum.png" height="360" width="640">
+<img src="./Documentation/disaggregation-research-spectrum.png">
 </p>
 
 ## pDPM-based Key-Value Stores
@@ -26,7 +26,7 @@ Based on where to process and manage data, we build three pDPM-based key-value s
 <!-- Both pDPM-Direct and pDPM-Central are developed based on [HERD](https://github.com/efficient/rdma_bench/tree/master/herd). -->
 
 <p align="center">
-<img src="./Documentation/pDPM-systems.png" height="360" width="640">
+<img src="./Documentation/pDPM-systems.png">
 </p>
 
 ## Classification 
@@ -53,7 +53,7 @@ Clover is a vanilla development effort. pDPM-Central and pDPM-Direct are built o
 - [Central](./Documentation/central.md)
 - [Direct](./Documentation/direct.md)
 
-The entire code base was designed and implemented by [Dr. Shin-Yeh Tsai](https://www.cs.purdue.edu/homes/tsai46/) during his doctoral research at Purdue University.
+**The entire code base was designed and implemented by [Dr. Shin-Yeh Tsai](https://www.cs.purdue.edu/homes/tsai46/) during his doctoral research at Purdue University.**
 
 ## Contact
 
